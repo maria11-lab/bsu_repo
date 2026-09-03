@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\bsu_repo\\computer graphics\\lab1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{386E1A6E-00E0-4710-A054-F4F8ECDBABDD}|lab1\\lab1.csproj|c:\\users\\admin\\bsu_repo\\computer graphics\\lab1\\lab1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{386E1A6E-00E0-4710-A054-F4F8ECDBABDD}|lab1\\lab1.csproj|solutionrelative:lab1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{386E1A6E-00E0-4710-A054-F4F8ECDBABDD}|lab1\\lab1.csproj|c:\\users\\admin\\bsu_repo\\computer graphics\\lab1\\lab1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{386E1A6E-00E0-4710-A054-F4F8ECDBABDD}|lab1\\lab1.csproj|solutionrelative:lab1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{386E1A6E-00E0-4710-A054-F4F8ECDBABDD}|lab1\\lab1.csproj|C:\\Users\\Admin\\bsu_repo\\computer graphics\\lab1\\lab1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{386E1A6E-00E0-4710-A054-F4F8ECDBABDD}|lab1\\lab1.csproj|solutionrelative:lab1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,6 +23,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\bsu_repo\\computer graphics\\lab1\\lab1\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "lab1\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Admin\\bsu_repo\\computer graphics\\lab1\\lab1\\MainWindow.xaml.cs",
+              "RelativeToolTip": "lab1\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-03T09:06:00.097Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\Admin\\bsu_repo\\computer graphics\\lab1\\lab1\\MainWindow.xaml",
               "RelativeDocumentMoniker": "lab1\\MainWindow.xaml",
@@ -30,19 +43,6 @@
               "RelativeToolTip": "lab1\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-09-03T09:06:01.726Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\bsu_repo\\computer graphics\\lab1\\lab1\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "lab1\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\Admin\\bsu_repo\\computer graphics\\lab1\\lab1\\MainWindow.xaml.cs",
-              "RelativeToolTip": "lab1\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-03T09:06:00.097Z",
               "EditorCaption": ""
             }
           ]
