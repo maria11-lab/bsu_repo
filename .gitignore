@@ -17,7 +17,7 @@
 *.pdb
 
 build/
-/build/
+**/build/
 *_build-*/
 build-*/
 *.pro.user
