@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="rgr1/rgr1.vcxproj" Id="6caaa359-05cd-44ad-8baa-50d008056509" />
+</Solution>
