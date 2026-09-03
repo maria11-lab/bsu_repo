@@ -1,0 +1,6 @@
+matanal;ivanov;9
+matana;kozlov;7
+matanal;kozlov;3
+mat;kozlov;9
+mat;kozlov;9
+m;kozlov;10

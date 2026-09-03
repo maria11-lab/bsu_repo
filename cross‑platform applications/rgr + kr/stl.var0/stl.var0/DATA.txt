@@ -1,0 +1,5 @@
+Minsk;Minsk;****
+Minsk;Turist;***
+Mogilev;Mogilev;***
+Mogilev;Turist;***
+Brest;Brest;***

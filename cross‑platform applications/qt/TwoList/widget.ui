@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>600</width><height>400</height></rect>
+  </property>
+  <property name="windowTitle">
+   <string>Лабораторная №6</string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <item>
+    <layout class="QHBoxLayout" name="listLayout">
+     <item>
+      <widget class="QListWidget" name="listLeft"/>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="moveButtonsLayout">
+       <item><spacer name="spacer1"><property name="orientation"><enum>Qt::Vertical</enum></property></spacer></item>
+       <item><widget class="QPushButton" name="btnToRight"><property name="text"><string>&gt;</string></property></widget></item>
+       <item><widget class="QPushButton" name="btnToLeft"><property name="text"><string>&lt;</string></property></widget></item>
+       <item><spacer name="spacer2"><property name="orientation"><enum>Qt::Vertical</enum></property></spacer></item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QListWidget" name="listRight"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="controlsLayout">
+     <item><widget class="QPushButton" name="btnAdd"><property name="text"><string>Добавить</string></property></widget></item>
+     <item><widget class="QPushButton" name="btnEdit"><property name="text"><string>Редактировать</string></property></widget></item>
+     <item><widget class="QPushButton" name="btnDelete"><property name="text"><string>Удалить</string></property></widget></item>
+     <item><widget class="QPushButton" name="btnClear"><property name="text"><string>Очистить</string></property></widget></item>
+     <item><widget class="QPushButton" name="btnSort"><property name="text"><string>Сортировать</string></property></widget></item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="settingsLayout">
+     <item><widget class="QCheckBox" name="checkMulti"><property name="text"><string>Множественное выделение</string></property></widget></item>
+     <item><widget class="QCheckBox" name="checkIconMode"><property name="text"><string>Режим иконок</string></property></widget></item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
