@@ -1,0 +1,253 @@
+<Window x:Class="lab1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:models="clr-namespace:lab1.Core.Models;assembly=lab1.Core"
+        xmlns:vm="clr-namespace:lab1.ViewModels"
+        Title="Цветовые модели — RGB · HLS · CMYK"
+        Height="640" Width="1080" MinWidth="880" MinHeight="560"
+        Background="#F3F4F7"
+        FontFamily="Segoe UI"
+        UseLayoutRounding="True" SnapsToDevicePixels="True">
+
+    <Window.Resources>
+
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+
+        <ObjectDataProvider x:Key="CmykAlgorithmValues" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="models:CmykAlgorithm" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <!-- Карточка модели -->
+        <Style x:Key="Card" TargetType="Border">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="#E3E6EA" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="14" />
+            <Setter Property="Padding" Value="20" />
+            <Setter Property="Margin" Value="8" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#B0B7C3" Direction="270" ShadowDepth="2" BlurRadius="12" Opacity="0.25" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="CardHeader" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="#2D3436" />
+            <Setter Property="Margin" Value="0,0,0,16" />
+        </Style>
+
+        <Style x:Key="ChannelLabel" TargetType="TextBlock">
+            <Setter Property="Width" Value="26" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="#636E72" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ChannelBox" TargetType="TextBox">
+            <Setter Property="Width" Value="56" />
+            <Setter Property="Height" Value="26" />
+            <Setter Property="TextAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderBrush" Value="#DFE3E8" />
+            <Setter Property="Padding" Value="2" />
+        </Style>
+
+        <Style x:Key="ChannelRow" TargetType="Grid">
+            <Setter Property="Margin" Value="0,7,0,7" />
+        </Style>
+
+        <Style TargetType="Slider">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="10,0,10,0" />
+        </Style>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+
+    <DockPanel Margin="14">
+
+        <!-- ===================== Заголовок и предпросмотр ===================== -->
+        <Grid DockPanel.Dock="Top" Margin="6,2,6,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                <TextBlock Text="Цветовые модели" FontSize="24" FontWeight="Bold" Foreground="#2D3436" />
+                <TextBlock Text="RGB ↔ HLS ↔ CMYK"
+                           FontSize="13" Foreground="#95A5A6" Margin="0,2,0,0" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                <Button Content="Выбрать из палитры…" x:Name="BtnOpenPalette"
+                        Padding="16,8" Margin="0,0,14,0"
+                        Background="#6C5CE7" Foreground="White" BorderThickness="0"
+                        FontWeight="SemiBold" Cursor="Hand">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <Border Width="64" Height="52" CornerRadius="10" BorderBrush="#DFE3E8" BorderThickness="1"
+                        Background="{Binding PreviewBrush}">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#B0B7C3" Direction="270" ShadowDepth="1" BlurRadius="6" Opacity="0.3" />
+                    </Border.Effect>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <!-- ===================== Три модели ===================== -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource Card}">
+                <StackPanel>
+                    <TextBlock Text="RGB" Style="{StaticResource CardHeader}" />
+
+                    <Grid Style="{StaticResource ChannelRow}">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock Text="R" Style="{StaticResource ChannelLabel}" DockPanel.Dock="Left" />
+                            <TextBox Style="{StaticResource ChannelBox}" DockPanel.Dock="Right"
+                                     Text="{Binding R, StringFormat=F0, UpdateSourceTrigger=LostFocus}" />
+                            <Slider Minimum="0" Maximum="255" Value="{Binding R}" />
+                        </DockPanel>
+                    </Grid>
+
+                    <Grid Style="{StaticResource ChannelRow}">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock Text="G" Style="{StaticResource ChannelLabel}" DockPanel.Dock="Left" />
+                            <TextBox Style="{StaticResource ChannelBox}" DockPanel.Dock="Right"
+                                     Text="{Binding G, StringFormat=F0, UpdateSourceTrigger=LostFocus}" />
+                            <Slider Minimum="0" Maximum="255" Value="{Binding G}" />
+                        </DockPanel>
+                    </Grid>
+
+                    <Grid Style="{StaticResource ChannelRow}">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock Text="B" Style="{StaticResource ChannelLabel}" DockPanel.Dock="Left" />
+                            <TextBox Style="{StaticResource ChannelBox}" DockPanel.Dock="Right"
+                                     Text="{Binding B, StringFormat=F0, UpdateSourceTrigger=LostFocus}" />
+                            <Slider Minimum="0" Maximum="255" Value="{Binding B}" />
+                        </DockPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="1" Style="{StaticResource Card}">
+                <StackPanel>
+                    <TextBlock Text="HLS" Style="{StaticResource CardHeader}" />
+
+                    <Grid Style="{StaticResource ChannelRow}">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock Text="H" Style="{StaticResource ChannelLabel}" DockPanel.Dock="Left" />
+                            <TextBox Style="{StaticResource ChannelBox}" DockPanel.Dock="Right"
+                                     Text="{Binding H, StringFormat=F0, UpdateSourceTrigger=LostFocus}" />
+                            <Slider Minimum="0" Maximum="360" Value="{Binding H}" />
+                        </DockPanel>
+                    </Grid>
+
+                    <Grid Style="{StaticResource ChannelRow}">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock Text="L" Style="{StaticResource ChannelLabel}" DockPanel.Dock="Left" />
+                            <TextBox Style="{StaticResource ChannelBox}" DockPanel.Dock="Right"
+                                     Text="{Binding L, StringFormat=F0, UpdateSourceTrigger=LostFocus}" />
+                            <Slider Minimum="0" Maximum="100" Value="{Binding L}" />
+                        </DockPanel>
+                    </Grid>
+
+                    <Grid Style="{StaticResource ChannelRow}">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock Text="S" Style="{StaticResource ChannelLabel}" DockPanel.Dock="Left" />
+                            <TextBox Style="{StaticResource ChannelBox}" DockPanel.Dock="Right"
+                                     Text="{Binding S, StringFormat=F0, UpdateSourceTrigger=LostFocus}" />
+                            <Slider Minimum="0" Maximum="100" Value="{Binding S}" />
+                        </DockPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+
+            <Border Grid.Column="2" Style="{StaticResource Card}">
+                <StackPanel>
+                    <TextBlock Text="CMYK" Style="{StaticResource CardHeader}" />
+
+                    <Grid Style="{StaticResource ChannelRow}">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock Text="C" Style="{StaticResource ChannelLabel}" DockPanel.Dock="Left" />
+                            <TextBox Style="{StaticResource ChannelBox}" DockPanel.Dock="Right"
+                                     Text="{Binding CmykC, StringFormat=F0, UpdateSourceTrigger=LostFocus}" />
+                            <Slider Minimum="0" Maximum="100" Value="{Binding CmykC}" />
+                        </DockPanel>
+                    </Grid>
+
+                    <Grid Style="{StaticResource ChannelRow}">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock Text="M" Style="{StaticResource ChannelLabel}" DockPanel.Dock="Left" />
+                            <TextBox Style="{StaticResource ChannelBox}" DockPanel.Dock="Right"
+                                     Text="{Binding CmykM, StringFormat=F0, UpdateSourceTrigger=LostFocus}" />
+                            <Slider Minimum="0" Maximum="100" Value="{Binding CmykM}" />
+                        </DockPanel>
+                    </Grid>
+
+                    <Grid Style="{StaticResource ChannelRow}">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock Text="Y" Style="{StaticResource ChannelLabel}" DockPanel.Dock="Left" />
+                            <TextBox Style="{StaticResource ChannelBox}" DockPanel.Dock="Right"
+                                     Text="{Binding CmykYChannel, StringFormat=F0, UpdateSourceTrigger=LostFocus}" />
+                            <Slider Minimum="0" Maximum="100" Value="{Binding CmykYChannel}" />
+                        </DockPanel>
+                    </Grid>
+
+                    <Grid Style="{StaticResource ChannelRow}">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock Text="K" Style="{StaticResource ChannelLabel}" DockPanel.Dock="Left" />
+                            <TextBox Style="{StaticResource ChannelBox}" DockPanel.Dock="Right"
+                                     Text="{Binding CmykK, StringFormat=F0, UpdateSourceTrigger=LostFocus}" />
+                            <Slider Minimum="0" Maximum="100" Value="{Binding CmykK}" />
+                        </DockPanel>
+                    </Grid>
+
+                    <Border BorderBrush="#EEF0F3" BorderThickness="0,1,0,0" Margin="0,10,0,14" />
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                            <TextBlock Text="Алгоритм" FontSize="11" Foreground="#95A5A6" Margin="0,0,0,4" />
+                            <ComboBox ItemsSource="{Binding Source={StaticResource CmykAlgorithmValues}}"
+                                      SelectedItem="{Binding SelectedCmykAlgorithm}" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="{Binding CmykStrength, StringFormat='Степень: {0:0}%'}"
+                                       FontSize="11" Foreground="#95A5A6" Margin="0,0,0,4" />
+                            <Slider Minimum="0" Maximum="100" Margin="0"
+                                    Value="{Binding CmykStrength}"
+                                    IsEnabled="{Binding IsCmykStrengthApplicable}" />
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+        </Grid>
+    </DockPanel>
+</Window>
