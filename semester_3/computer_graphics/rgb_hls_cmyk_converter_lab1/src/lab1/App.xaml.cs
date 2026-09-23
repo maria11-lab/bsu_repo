@@ -7,7 +7,7 @@ namespace lab1
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            MessageBox.Show(lab1.Core.Test.ColorMathTests.RunAllTests(), "Результаты тестов");
+            //MessageBox.Show(lab1.Core.Test.ColorMathTests.RunAllTests(), "Результаты тестов");
         }
     }
 }
