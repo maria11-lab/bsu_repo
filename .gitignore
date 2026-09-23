@@ -38,3 +38,12 @@ CMakeLists.txt.user.*
 *.log
 .DS_Store
 Thumbs.db
+
+*.class
+
+.settings/
+.project
+.classpath
+
+.DS_Store
+Thumbs.db
