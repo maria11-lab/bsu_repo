@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\lab1.Core\lab1.Core.csproj" />
+    <ProjectReference Include="..\lab1.Core\lab1.core.csproj" />
   </ItemGroup>
 
 </Project>
