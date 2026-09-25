@@ -47,3 +47,21 @@ Thumbs.db
 
 .DS_Store
 Thumbs.db
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+.env
+.venv
+env/
+venv/
+ENV/
+
+.idea/
+.vscode/
+*.swp
+*.swo
+
+.DS_Store
+Thumbs.db
