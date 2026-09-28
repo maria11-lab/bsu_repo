@@ -19,7 +19,7 @@ Topics include:
 - calling Assembly routines from C++ programs;
 - low-level programming concepts.
 
-### [Cross-platform application development](https://github.com/maria11-lab/bsu_repo/tree/main/semester_2/cross_platform_cpp)
+### [Cross-platform application development](https://github.com/maria11-lab/bsu_repo/tree/main/semester_2/Cross_platform_cpp)
 
 Application development using **C++ and Qt**.
 
