@@ -1,0 +1,11 @@
+Moda;Minsk;1934
+moda;MiNsk;1934
+Mango;Mogilev;1989
+Panda;Mogilev;2001
+Lux;MINSK;2020
+LUX;minsK;2020
+style;VArshava;999
+STYLE;VARSHAVA;999
+stiL;Alexandria;1576
+stIl;AlexanDria;1576
+sTil;AlexAndria;1576

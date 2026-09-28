@@ -1,0 +1,13 @@
+operaTional;1000;5;50
+inVestment;5000;12;200
+financial;2000;8;100
+operational;five;six;seven
+fina;2000;8;100
+operational;1500;5;75
+investment;10000;15;500
+Operational;800;3;30
+operational;800;3;30
+Operational;800;3;30
+
+
+something wrong

@@ -1,0 +1,5 @@
+House SkyTower 2022 0 45
+Renovation OldLibrary 1930 1 2024 10
+House CozyCottage 2010 0 2
+Renovation FactoryX 1985 1 2025 24
+House SkyTower 2018 0 30

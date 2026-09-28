@@ -1,0 +1,9 @@
+financial;2000;8;100
+financial;3000;10;150
+inVestment;5000;12;200
+investment;10000;15;500
+operaTional;1000;5;50
+operational;1500;5;75
+Operational;800;3;30
+operational;800;3;30
+Operational;800;3;30
