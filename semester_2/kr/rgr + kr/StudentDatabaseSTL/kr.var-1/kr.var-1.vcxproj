@@ -24,6 +24,7 @@
     <ProjectGuid>{cedd7d69-e2e9-4379-9e36-fa9d2d0a9356}</ProjectGuid>
     <RootNamespace>krvar1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>StudentDatabaseSTL</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -127,7 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="kr.var-1.cpp" />
+    <ClCompile Include="StudentDatabaseSTL.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="DATA.txt" />

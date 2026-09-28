@@ -21,9 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a4434f6c-fabd-4a92-964a-c11a1de4d638}</ProjectGuid>
-    <RootNamespace>Buchkovavar12</RootNamespace>
+    <ProjectGuid>{7a4f3bf4-d865-4be1-bbfc-a96970c24bd1}</ProjectGuid>
+    <RootNamespace>My11Buchkova3</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>BoutiqueDatabaseSTL</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -127,11 +128,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Buchkova.var12.cpp" />
+    <ClCompile Include="BoutiqueDatabaseSTL.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="input.txt" />
-    <Text Include="output.txt" />
+    <Text Include="DATA.txt" />
+    <Text Include="QUERY.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

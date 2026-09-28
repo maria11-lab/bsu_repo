@@ -1,6 +1,6 @@
-# Test 1 - STL 
+# Hotel Database
 
-## Task
+### Test 1 - STL (var 0)
 
 Develop a C++ application for processing hotel information stored in text
 files using STL containers.
