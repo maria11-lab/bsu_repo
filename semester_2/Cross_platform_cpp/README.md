@@ -15,6 +15,6 @@ University practical works in C++. All works are split into two folders:
 
 ### Console
 
-- **[HotelDatabaseSTL](https://github.com/maria11-lab/bsu_repo/tree/main/semester_2/Cross_platform_cpp/console/HotelDatabaseSTL)**: hotel database built with STL containers and algorithms.
-- **[StudentSessionManagement_OOP](https://github.com/maria11-lab/bsu_repo/tree/main/semester_2/Cross_platform_cpp/console/StudentSessionManagement_OOP)**: student exam session management using OOP.
-- **[AnimalShelter_DesignPatterns](https://github.com/maria11-lab/bsu_repo/tree/main/semester_2/Cross_platform_cpp/console/AnimalShelter_DesignPatterns)**: animal shelter management built with the use of the Factory Method and Composite design patterns.
+- **[HotelDatabaseSTL](https://github.com/maria11-lab/bsu_repo/tree/main/semester_2/Cross_platform_cpp/%D1%81onsole/HotelDatabaseSTL)**: hotel database built with STL containers and algorithms.
+- **[StudentSessionManagement_OOP](https://github.com/maria11-lab/bsu_repo/tree/main/semester_2/Cross_platform_cpp/%D1%81onsole/StudentSessionManagement_OOP)**: student exam session management using OOP.
+- **[AnimalShelter_DesignPatterns](https://github.com/maria11-lab/bsu_repo/tree/main/semester_2/Cross_platform_cpp/%D1%81onsole/AnimalShelter_DesignPatterns)**: animal shelter management built with the use of the Factory Method and Composite design patterns.
