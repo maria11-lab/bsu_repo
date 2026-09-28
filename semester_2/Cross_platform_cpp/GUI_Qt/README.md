@@ -1,6 +1,6 @@
-# Cross-Platform C++
+# Cross-Platform Qt GUI applications.
 
-A collection of C++ projects developed as part of the cross-platform programming coursework.
+A collection of C++ applications with a graphical interface built with Qt developed as part of the cross-platform programming coursework.
 
 ## Projects
 
