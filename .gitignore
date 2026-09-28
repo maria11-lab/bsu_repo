@@ -12,6 +12,13 @@
 *.filters
 *.opensdf
 
+.vs/
+x64/
+Debug/
+Release/
+*.user
+*.suo
+
 *.exe
 *.dll
 *.pdb
