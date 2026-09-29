@@ -1,40 +1,31 @@
 # case_swap_lab2
 
-Консольное Java-приложение для обработки строк: смена регистра первой буквы каждого слова во входной строке на противоположный.
+A Java console application for processing strings by changing the case of the first letter of each word in the input.
 
-## Задание
+## Task
 
-Разработать консольное приложение. При работе использовать классы `Character`, `String`, `StringBuffer`/`StringBuilder`. Для чтения стандартного входного потока построчно до конца файла используется класс `Scanner`, результат выводится в стандартный выходной поток (при вводе с клавиатуры признак конца файла в Windows — `Ctrl+Z`, в Unix/Linux — `Ctrl+D`).
+Develop a console application using the `Character`, `String`, and `StringBuffer`/`StringBuilder` classes. The program reads lines from the standard input until the end of the file using `Scanner` and writes the result to the standard output.
 
-**Вариант 21.** Каждая входная строка представляет собой слова, разделённые одним или несколькими пробелами и знаками препинания. Для каждой входной строки: в каждом слове изменить регистр первой буквы на противоположный (заглавные буквы — на строчные и наоборот).
+**Variant 21.** Each input line consists of words separated by one or more spaces and punctuation marks. For each input line, change the case of the first letter of every word to the opposite case: uppercase letters become lowercase and lowercase letters become uppercase.
 
-## Пример
+## Example
 
-Ввод:
-```
+Input:
+
+```text
 Привет, Мир! java Программирование.
 HELLO world, JAVA is FUN.
-```
+````
 
-Вывод:
-```
+Output:
+
+```text
 привет, мир! Java программирование.
 hELLO World, jAVA Is fUN.
 ```
 
-## Как это работает
+## How it works
 
-Программа проходит по строке посимвольно и с помощью флага отслеживает начало нового слова (после пробела или знака препинания). У первой буквы каждого слова регистр меняется методами `Character.isUpperCase`, `Character.toUpperCase`, `Character.toLowerCase`; остальные символы копируются без изменений в `StringBuilder`.
+The program processes the input line character by character and uses a flag to track the beginning of a new word after a space or punctuation mark.
 
-## Сборка и запуск
-
-```bash
-javac case_swap_lab2.java
-java case_swap_lab2 < input.txt
-```
-
-или ввод с клавиатуры (завершить `Ctrl+Z` в Windows / `Ctrl+D` в Unix/Linux):
-
-```bash
-java case_swap_lab2
-```
+For the first letter of each word, the program uses `Character.isUpperCase`, `Character.toUpperCase`, and `Character.toLowerCase` to change its case. Other characters are copied unchanged into a `StringBuilder`.
