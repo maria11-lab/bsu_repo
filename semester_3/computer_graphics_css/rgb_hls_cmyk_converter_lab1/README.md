@@ -1,63 +1,43 @@
-# Цветовые модели: RGB ↔ HLS ↔ CMYK
+# RGB ↔ HLS ↔ CMYK Color Converter
 
-Лабораторная работа №1 по курсу **«Компьютерная графика»**.
+A **WPF desktop application built with C# and .NET 8** for interactive color manipulation and conversion between the **RGB, HLS, and CMYK** color models.
 
-WPF-приложение на **.NET 8** для интерактивной работы с цветом и его представлением в трёх цветовых моделях: **RGB, HLS и CMYK**.
+The project was developed as part of a **Computer Graphics** laboratory course.
 
-Приложение позволяет изменять параметры цвета в любой из моделей и автоматически пересчитывает соответствующие значения в остальных. Пользователь может задавать значения вручную, изменять их с помощью ползунков или выбирать цвет из системной палитры Windows.
+## Features
 
-Проект построен с разделением пользовательского интерфейса и вычислительной логики: математические операции преобразования цветов вынесены в отдельный проект и не зависят от WPF. Для управления состоянием интерфейса используется архитектура **MVVM**, а обновление связанных представлений организовано через механизм уведомлений об изменении состояния.
+* Work with three color models:
 
----
+  * **RGB** — Red, Green, Blue
+  * **HLS** — Hue, Lightness, Saturation
+  * **CMYK** — Cyan, Magenta, Yellow, Key (Black)
+* Automatic synchronization between all color models.
+* Manual value input through text fields.
+* Interactive value adjustment using sliders.
+* Real-time color preview.
+* Color selection through the Windows system color picker.
+* Multiple RGB → CMYK separation algorithms:
 
-## Возможности
+  * **Naive**
+  * **UCR** — Under Color Removal
+  * **GCR** — Gray Component Replacement
+* Adjustable UCR and GCR strength.
+* Separate, WPF-independent project for color conversion logic.
+* Automated checks for mathematical color conversions.
 
-### Работа с цветовыми моделями
+## Architecture
 
-Приложение одновременно отображает текущий цвет в трёх моделях:
-
-* **RGB** — Red, Green, Blue;
-* **HLS** — Hue, Lightness, Saturation;
-* **CMYK** — Cyan, Magenta, Yellow, Key (Black).
-
-Изменение любого параметра автоматически приводит к пересчёту остальных моделей.
-
-### Управление значениями
-
-Цвет можно задавать несколькими способами:
-
-* точным вводом значения в текстовое поле;
-* плавным изменением значения с помощью ползунка;
-* выбором цвета через системную палитру Windows.
-
-Изменения применяются интерактивно, поэтому пользователь сразу видит результат в предпросмотре цвета.
-
-### Преобразование RGB → CMYK
-
-Для преобразования в CMYK реализовано несколько вариантов цветоделения:
-
-* **Naive** — прямое преобразование без дополнительной компенсации серой составляющей;
-* **UCR (Under Color Removal)** — удаление части CMY-компонентов в тенях с заменой их чёрным каналом;
-* **GCR (Gray Component Replacement)** — замена серой составляющей на чёрный канал в более широком диапазоне;
-* настройка силы алгоритма для UCR и GCR.
-
-Таким образом, проект демонстрирует не только базовое преобразование цветовых моделей, но и различные подходы к формированию CMYK-представления.
-
----
-
-## Архитектура проекта
-
-Проект разделён на две основные части:
+The project separates the mathematical logic from the user interface:
 
 ```text
 src/
-├── lab1.Core/                  # Вычислительная логика
+├── lab1.Core/              # Color conversion logic
 │   └── Models/
 │       ├── HlsConverter.cs
 │       ├── CmykConverter.cs
 │       └── ColorMathTests.cs
 │
-└── lab1/                       # WPF-приложение
+└── lab1/                   # WPF application
     ├── MainWindow.xaml
     ├── MainWindow.xaml.cs
     │
@@ -68,181 +48,130 @@ src/
 
 ### `lab1.Core`
 
-Отдельный проект содержит всю основную математическую логику приложения.
+Contains the core mathematical logic independently of WPF:
 
-Здесь находятся алгоритмы:
+* RGB ↔ HLS conversion
+* RGB ↔ CMYK conversion
+* Naive, UCR, and GCR color separation
+* Mathematical conversion tests
 
-* преобразования **RGB ↔ HLS**;
-* преобразования **RGB ↔ CMYK**;
-* работы с алгоритмами **Naive / UCR / GCR**;
-* проверки корректности математических преобразований.
+The core project has no dependency on the WPF UI, making the conversion algorithms easier to test, reuse, and extend.
 
-Главная особенность этого разделения заключается в том, что `lab1.Core` **не имеет зависимости от WPF**.
+### `lab1`
 
-Вычислительная часть приложения отделена от интерфейса и может использоваться независимо от конкретного UI. Например, тот же код преобразования можно подключить к другому пользовательскому интерфейсу или использовать непосредственно в автоматизированных тестах.
+The main WPF application.
 
-Это позволяет не смешивать математические расчёты с логикой отображения и делает проект проще для тестирования и дальнейшего расширения.
+The UI follows the **MVVM (Model–View–ViewModel)** pattern:
 
----
+* `MainWindow.xaml` — user interface
+* `MainViewModel` — application state and UI interaction logic
+* `RelayCommand` — commands for user actions
 
-## MVVM
+Property synchronization is implemented using **`INotifyPropertyChanged`** and WPF data binding.
 
-WPF-часть приложения построена с использованием паттерна **MVVM (Model–View–ViewModel)**.
-
-### Model
-
-Математические модели и операции находятся в `lab1.Core`.
-
-Именно здесь выполняются преобразования между цветовыми пространствами и находятся правила расчёта значений.
-
-### View
-
-`MainWindow.xaml` отвечает за пользовательский интерфейс приложения:
-
-* отображение RGB, HLS и CMYK;
-* текстовые поля;
-* ползунки;
-* элементы выбора алгоритма CMYK;
-* кнопку открытия системной палитры;
-* визуальный предпросмотр цвета.
-
-### ViewModel
-
-`MainViewModel` связывает интерфейс с вычислительной частью приложения.
-
-ViewModel хранит текущее состояние цвета и отвечает за синхронизацию значений между тремя цветовыми моделями.
-
-При изменении одного из параметров ViewModel запускает соответствующее преобразование и обновляет остальные значения.
-
-Отдельно предусмотрена защита от **циклических пересчётов**: обновление одного значения не должно запускать бесконечную цепочку взаимных обновлений RGB → HLS → RGB → HLS и т. д.
-
----
-
-## Observer / Property Change Notifications
-
-Для синхронизации состояния интерфейса используется механизм **наблюдения за изменениями свойств**.
-
-ViewModel уведомляет интерфейс об изменении значений, благодаря чему WPF автоматически обновляет связанные элементы управления.
-
-Такой подход соответствует идее паттерна **Observer**: объект, содержащий состояние, уведомляет подписанные компоненты о произошедших изменениях.
-
-Это особенно важно для данного приложения, поскольку одно пользовательское действие может изменить сразу несколько связанных значений.
-
-Например:
+When a color component is changed, the ViewModel recalculates the corresponding representations and notifies the UI:
 
 ```text
-Изменение R
-   ↓
-Обновление RGB
-   ↓
-Пересчёт HLS
-   ↓
-Пересчёт CMYK
-   ↓
-Уведомление интерфейса
-   ↓
-Обновление элементов UI
+User Input
+    │
+    ▼
+MainViewModel
+    │
+    ├──► RGB ↔ HLS
+    │
+    └──► RGB ↔ CMYK
+            │
+            ▼
+      PropertyChanged
+            │
+            ▼
+        WPF Binding
+            │
+            ▼
+        Updated UI
 ```
 
-Таким образом, пользователь работает с одним цветом, а приложение поддерживает согласованное состояние сразу нескольких его представлений.
+The ViewModel also prevents recursive updates when multiple color models are synchronized.
 
----
+## Color Conversion
 
-## Команды и взаимодействие с UI
+### RGB ↔ HLS
 
-Для обработки действий пользователя используется `RelayCommand`.
+The application supports conversion between RGB and HLS, including calculation of:
 
-Команды позволяют отделить действия интерфейса от конкретной реализации View и передавать их во ViewModel в соответствии с подходом MVVM.
+* Hue
+* Lightness
+* Saturation
 
-Это позволяет избежать размещения основной логики приложения непосредственно в обработчиках элементов интерфейса.
+Both conversion directions are implemented.
 
-При этом `MainWindow.xaml.cs` содержит только ту логику, которая непосредственно связана с особенностями WPF и не относится к вычислениям цвета — например, работу с системным диалогом выбора цвета и обработку отдельных UI-событий.
+### RGB → CMYK
 
----
+RGB-to-CMYK conversion supports several color separation methods.
 
-## Тестирование
+#### Naive
 
-В проекте предусмотрены **ручные тесты математических преобразований**, расположенные в `ColorMathTests.cs`.
+A basic conversion from RGB to CMYK without additional gray component removal.
 
-Тесты используются для проверки корректности вычислительной части независимо от пользовательского интерфейса.
+#### UCR
 
-Проверяются, в частности:
+**Under Color Removal** reduces the amount of CMY in darker areas and transfers part of the neutral component to the black channel.
 
-* преобразования между RGB и HLS;
-* преобразования между RGB и CMYK;
-* корректность обратного преобразования;
-* граничные значения цветовых компонентов;
-* поведение различных алгоритмов цветоделения.
+#### GCR
 
-Тестирование вычислений отдельно от UI позволяет обнаруживать ошибки непосредственно в математической части программы, не связывая их с поведением WPF-интерфейса.
+**Gray Component Replacement** replaces the gray component of CMY with the black channel over a wider range.
 
----
+Both UCR and GCR provide an adjustable strength parameter, allowing different CMYK representations of the same RGB color to be explored.
 
-## Принцип работы
+## Testing
 
-Общая схема взаимодействия компонентов выглядит следующим образом:
+The mathematical conversion logic is tested independently of the WPF interface.
+
+Tests are located in:
 
 ```text
-                 ┌──────────────────┐
-                 │       View       │
-                 │    MainWindow    │
-                 └────────┬─────────┘
-                          │
-                    Data Binding
-                          │
-                          ▼
-                 ┌──────────────────┐
-                 │   ViewModel      │
-                 │ MainViewModel    │
-                 └────────┬─────────┘
-                          │
-                 ┌────────┴─────────┐
-                 │                  │
-                 ▼                  ▼
-        ┌─────────────────┐  ┌─────────────────┐
-        │ HlsConverter    │  │ CmykConverter   │
-        │ RGB ↔ HLS       │  │ RGB ↔ CMYK      │
-        └─────────────────┘  └─────────────────┘
-                 │                  │
-                 └────────┬─────────┘
-                          ▼
-                  Mathematical Logic
+lab1.Core/Models/ColorMathTests.cs
 ```
 
-Такое разделение позволяет независимо развивать пользовательский интерфейс и вычислительную часть приложения.
+The tests cover:
 
----
+* RGB ↔ HLS conversions
+* RGB ↔ CMYK conversions
+* Round-trip conversions
+* Boundary values
+* Different CMYK separation algorithms
 
-## Сборка и запуск
+Keeping the conversion logic separate from the UI makes it possible to verify the mathematical part of the application independently.
 
-### Требования
+## Requirements
 
-* Windows;
-* **.NET 8 SDK**;
-* Visual Studio 2022+ с workload **.NET desktop development**.
+* Windows
+* [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+* Visual Studio 2022+ with the **.NET desktop development** workload
+
+## Getting Started
 
 ### Visual Studio
 
-1. Открыть `lab1.sln`.
-2. Установить `lab1` в качестве стартового проекта.
-3. Запустить приложение через **F5**.
+1. Clone the repository.
+2. Open `lab1.sln`.
+3. Set `lab1` as the startup project.
+4. Run the application with **F5**.
 
-### Командная строка
+### Command Line
 
 ```bash
 cd src/lab1
 dotnet run
 ```
 
-После сборки исполняемый файл находится в:
+The executable is generated at:
 
 ```text
 src/lab1/bin/Debug/net8.0-windows/lab1.exe
 ```
 
----
-
-## Структура проекта
+## Project Structure
 
 ```text
 rgb_hls_cmyk_converter_lab1/
@@ -266,14 +195,6 @@ rgb_hls_cmyk_converter_lab1/
 └── README.md
 ```
 
-## Документация
-
-Подробный отчёт о разработке лабораторной работы, возникших проблемах и способах их решения находится в [`report_lab1.docx`](report_lab1.docx).
-
-В отчёте отдельно рассматриваются вопросы синхронизации цветовых моделей, реализации преобразований и построения пользовательского интерфейса.
-
----
-
 ## Technologies
 
 * **C#**
@@ -281,8 +202,7 @@ rgb_hls_cmyk_converter_lab1/
 * **WPF**
 * **MVVM**
 * **Data Binding**
-* **Observer / Property Change Notifications**
-* **Color Models**
+* **INotifyPropertyChanged**
 * **RGB / HLS / CMYK**
 * **UCR / GCR**
 
