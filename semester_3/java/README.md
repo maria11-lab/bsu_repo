@@ -1,45 +1,22 @@
 # Java
 
-Учебные проекты и лабораторные работы по дисциплине **Java**, выполненные в рамках университетской программы.
+University practical works and laboratory assignments in Java.
 
-В этом разделе собраны практические задания, последовательно выполненные в процессе изучения языка Java и основных принципов разработки программного обеспечения. Работы охватывают различные темы курса и представлены в виде самостоятельных проектов с исходным кодом и документацией.
+## Featured works
 
-Каждая лабораторная работа находится в отдельной директории и имеет собственный `README.md`, в котором приведены постановка задачи, описание подхода к решению, особенности реализации и примеры работы программы.
+No featured works yet.
 
-## Laboratory Works
+## Other works
 
-| # | Project                                                                                                  | Description                                                                        |
-| - | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| 1 | [row_mode_sub_lab1](https://github.com/maria11-lab/bsu_repo/tree/main/semester_3/java/row_mode_sub_lab1) | Работа с матрицами и определение наиболее часто встречающегося элемента            |
-| 2 | [case_swap_lab2](https://github.com/maria11-lab/bsu_repo/tree/main/semester_3/java/case_swap_lab2)       | Обработка строк и изменение регистра символов                                      |
-| 3 | *Coming soon*                                                                                            | —                                                                                  |
-| 4 | *Coming soon*                                                                                            | —                                                                                  |
-| 5 | *Coming soon*                                                                                            | —                                                                                  |
+| **Project** | **Description** |
+| --- | --- |
+| [**row_mode_sub_lab1**](https://github.com/maria11-lab/bsu_repo/tree/main/semester_3/java/row_mode_sub_lab1) | Matrix processing and finding the most frequently occurring element. |
+| [**case_swap_lab2**](https://github.com/maria11-lab/bsu_repo/tree/main/semester_3/java/case_swap_lab2) | String processing and changing the case of characters. |
 
-> Список дополняется по мере выполнения лабораторных работ.
-
-## Project Structure
-
-Каждая работа организована как отдельный самостоятельный проект:
-
-```text
-java/
-├── row_mode_sub_lab1/
-│   ├── src/
-│   └── README.md
-│
-├── case_swap_lab2/
-│   ├── src/
-│   └── README.md
-│
-└── ...
-```
-
-Внутри каждой директории содержатся исходные файлы проекта и документация, относящаяся непосредственно к соответствующей лабораторной работе.
+## Future works
 
 ## Technologies
 
-* **Java**
-* **Object-Oriented Programming**
-* **Algorithms and Data Structures**
-* **Git / GitHub**
+- Java
+- Object-Oriented Programming
+- Algorithms and Data Structures
