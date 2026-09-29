@@ -1,49 +1,44 @@
 # row_mode_sub
 
-Консольное Java-приложение для работы с матрицами: вычитание модуса (наиболее часто встречающегося значения) из каждой строки матрицы.
+A Java console application for processing matrices by subtracting the mode (the most frequently occurring value) from each row.
 
-## Задание
+## Task
 
-Разработать консольное приложение. По возможности использовать класс `Arrays`. Если решение отсутствует — вывести сообщение с причиной.
+Develop a console application. Use the `Arrays` class where possible. If no solution is available, display a message explaining the reason.
 
-**Вариант 6.** Ввести с консоли `n` — размерность матрицы `a[n][n]`. Задать значения элементов матрицы в интервале от `-n` до `n` с помощью датчика случайных чисел. Построить новую матрицу, вычитая из элементов каждой строки матрицы `a` её модус (значение, наиболее часто встречающееся в этой строке). Распечатать исходную матрицу и результат.
+**Variant 6.** Read `n` — the size of the `a[n][n]` matrix. Generate matrix elements as random integers in the range `[-n, n]`. Create a new matrix by subtracting the mode of each row from every element in that row. Print both the original matrix and the result.
 
-## Пример
+## Example
 
-Ввод:
-```
-Введите n (размерность матрицы): 4
-```
+Input:
 
-Вывод (случайные числа при каждом запуске разные):
-```
-Исходная матрица:
+```text
+Enter n (matrix size): 4
+````
+
+Output (random values are different on each run):
+
+```text
+Original matrix:
 [2, -1, 2, 0]
 [-3, -3, 1, -3]
 [0, 4, 0, -2]
 [1, 1, -2, 1]
-Результат (из каждой строки вычтен её модус):
+
+Result (row mode subtracted):
 [0, -3, 0, -2]
 [0, 0, 4, 0]
 [0, 4, 0, -2]
 [0, 0, -3, 0]
 ```
-В первой строке модус — 2 (встречается дважды), во второй строке — -3, в третьей — 0, в четвёртой — 1.
 
-## Как это работает
+In the first row, the mode is `2` (appears twice). In the second row, it is `-3`; in the third row, `0`; and in the fourth row, `1`.
 
-1. Матрица `n x n` заполняется случайными числами в диапазоне `[-n, n]` (`Random`).
-2. Для каждой строки ищется модус: копия строки сортируется (`Arrays.sort`), затем проходом по отсортированному массиву считается длина каждой серии одинаковых значений и запоминается значение с наибольшей длиной серии. Если несколько значений встречаются одинаково часто — берётся наименьшее из них.
-3. Строится новая матрица, где из каждого элемента строки вычтен модус этой строки.
-4. Исходная и результирующая матрицы выводятся построчно (`Arrays.toString`).
+## How it works
 
-Если введённое `n` не положительное, программа выводит сообщение о том, что решение отсутствует, вместо построения матрицы.
+1. The `n x n` matrix is filled with random integers in the range `[-n, n]` using `Random`.
+2. The mode of each row is found by sorting a copy of the row with `Arrays.sort`. The program then iterates through the sorted array, counts the length of each sequence of equal values, and stores the value with the highest frequency. If multiple values occur equally often, the smallest one is selected.
+3. A new matrix is created by subtracting the mode of each row from every element in that row.
+4. The original and resulting matrices are printed row by row using `Arrays.toString`.
 
-## Сборка и запуск
-
-```bash
-javac row_mode_sub.java
-java row_mode_sub
-```
-
-Программа сама запросит `n` — просто введи число и нажми Enter.
+If the entered `n` is not positive, the program displays a message indicating that no solution is available instead of creating the matrix.
