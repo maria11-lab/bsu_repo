@@ -72,3 +72,15 @@ ENV/
 
 .DS_Store
 Thumbs.db
+
+*.class
+
+bin/
+
+*.jar
+
+.idea/
+.vscode/
+*.iml
+
+.DS_Store
