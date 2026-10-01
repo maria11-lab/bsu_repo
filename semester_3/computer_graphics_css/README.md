@@ -14,7 +14,8 @@ No featured works yet.
 
 | **Project** | **Description** |
 | --- | --- |
-| [**rgb_hls_cmyk_converter_lab1**](https://github.com/maria11-lab/bsu_repo/tree/main/semester_3/computer_graphics/rgb_hls_cmyk_converter_lab1) | Desktop application for converting between the RGB, HLS, and CMYK color models. |
+| [**rgb_hls_cmyk_converter**](https://github.com/maria11-lab/bsu_repo/tree/main/semester_3/computer_graphics/rgb_hls_cmyk_converter_lab1) | Desktop application for converting between the RGB, HLS, and CMYK color models. |
+|[**Image_inspector**](https://github.com/maria11-lab/bsu_repo/tree/main/semester_3/computer_graphics_css/Image_inspector_lab2)|A WPF application for analyzing image files and determining their format, dimensions, color depth, resolution, and compression parameters.|
 
 ## Future works
 
